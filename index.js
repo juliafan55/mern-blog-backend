@@ -7,4 +7,7 @@ const morgan = require("morgan");
 
 dotenv.config()
 
+//connect to db
+require('./config/db.connection');
+
 app.listen(process.env.PORT,() => console.log("Backend is running"))

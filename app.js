@@ -18,6 +18,7 @@ mongoose
 //bringing the routes
 const postRoutes = require("./routes/post");
 const authRoutes = require("./routes/auth");
+const userRoutes = require("./routes/user");
 
 //middleware
 app.use(morgan("dev"));
@@ -28,6 +29,7 @@ app.use(expressValidator());
 //routes - that is working as middleware
 app.use("/", postRoutes);
 app.use("/", authRoutes);
+app.use("/", userRoutes);
 
 //auth error handling
 app.use(function (err, req, res, next) {

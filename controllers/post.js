@@ -1,5 +1,6 @@
 const formidable = require("formidable");
 const fs = require("fs")
+const _ = require("lodash")
 const Post = require("../models/Post");
 
 exports.postById = (req, res, next, id) => {
@@ -69,6 +70,18 @@ exports.isPoster = (req, res, next) => {
         return res.status(403).json({error: "User is not authorized."})
     }
     next()
+}
+
+exports.updatePost = (req, res, next) => {
+    let post = req.post
+    post = _.extend(post, req.body)
+    post.updated = Date.now()
+    post.save(err => {
+        if (err) {
+            return res.status(400).json({ error: err });
+        }
+        res.json(post)
+    })
 }
 
 exports.deletePost = (req, res) => {

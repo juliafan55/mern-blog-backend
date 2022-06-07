@@ -7,7 +7,7 @@ const { requireSignin } = require("../controllers/auth")
 const { userById } = require("../controllers/user");
 
 router.get('/', getPosts);
-router.post('/post', requireSignin, createPostValidator, createPost);
+router.post('/post/new/:userId', requireSignin, createPost, createPostValidator,);
 
 //if there's userId, userById method will run
 router.param("userId", userById)

@@ -45,7 +45,7 @@ exports.updateUser = (req, res, next) => {
     user.updated = Date.now()
     user.save((err) => {
         if (err) {
-            return res.status(400).json({ error: "Not authorized." });
+            return res.status(400).json({ error: "You're not authorized to update user." });
         }
         user.hashed_password = undefined;
         user.salt = undefined;
